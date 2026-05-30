@@ -378,7 +378,63 @@ function CarrierSection({ title, lead, children }) {
   );
 }
 
+// =================================================================
+// CONFIRM EMAIL MODAL — fired from the Contact Information Continue
+// button. User re-enters their email to confirm it before moving on.
+// =================================================================
+function ConfirmEmailModal({ email, onConfirm, onCancel }) {
+  const [val, setVal] = useS("");
+  const [err, setErr] = useS("");
+
+  useE(() => {
+    function onKey(e) { if (e.key === "Escape") onCancel(); }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [onCancel]);
+
+  function submit(e) {
+    if (e) e.preventDefault();
+    const a = val.trim().toLowerCase();
+    const b = (email || "").trim().toLowerCase();
+    if (!a) { setErr("Please re-enter your email to confirm."); return; }
+    if (a !== b) { setErr("That doesn't match the email you entered above."); return; }
+    onConfirm();
+  }
+
+  return (
+    <div className="sa-overlay" role="dialog" aria-modal="true" aria-label="Confirm your email">
+      <div className="sa-backdrop" onClick={onCancel} />
+      <div className="confirmModal">
+        <button type="button" className="confirmModal__close" aria-label="Cancel" onClick={onCancel}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+        <form className="confirmModal__body" onSubmit={submit}>
+          <div className="confirmModal__title">Confirm your email</div>
+          <div className="confirmModal__sub">
+            We'll send your account details and shipment updates here. Re-enter your email to make sure it's correct.
+          </div>
+          <Field label="Confirm Email" error={err}>
+            <TextInput
+              type="email"
+              value={val}
+              placeholder={email || "you@company.com"}
+              onChange={(e) => { setVal(e.target.value); if (err) setErr(""); }}
+            />
+          </Field>
+          <div className="confirmModal__actions">
+            <button type="button" className="skid-btn skid-btn--tertiary skid-btn--lg" onClick={onCancel}>Cancel</button>
+            <button type="submit" className="skid-btn skid-btn--primary skid-btn--lg">Confirm Email</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
+
 function CarrierContact({ data, setData, goto, back, connected, clearConnected }) {
+  const [showConfirm, setShowConfirm] = useS(false);
   return (
     <CarrierShell step={1}>
       {connected && <ConnectedBanner connected={connected} onDismiss={clearConnected} />}
@@ -441,7 +497,14 @@ function CarrierContact({ data, setData, goto, back, connected, clearConnected }
         </div>
       </CarrierSection>
       <div className="carrierForm__divider" />
-      <FooterNav onBack={() => goto("welcome")} onContinue={() => goto("carrier-2")} />
+      <FooterNav onBack={() => goto("welcome")} onContinue={() => setShowConfirm(true)} />
+      {showConfirm && (
+        <ConfirmEmailModal
+          email={data.email}
+          onCancel={() => setShowConfirm(false)}
+          onConfirm={() => { setShowConfirm(false); goto("carrier-2"); }}
+        />
+      )}
     </CarrierShell>
   );
 }

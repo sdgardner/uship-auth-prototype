@@ -1142,6 +1142,48 @@ main.app__form { animation: appFadeIn 240ms cubic-bezier(0.2, 0, 0, 1) both; }
 }
 .sa-modal__close:hover { background: var(--gray-100); color: var(--gray-900); }
 
+/* ============================================================
+   CONFIRM EMAIL MODAL (Contact Information → Continue)
+   ============================================================ */
+.confirmModal {
+  position: relative;
+  width: min(440px, calc(100vw - 48px));
+  background: var(--gray-0);
+  border-radius: 12px;
+  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.45), 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: saPop 220ms cubic-bezier(0.2, 0, 0, 1) both;
+}
+.confirmModal__close {
+  position: absolute; top: 14px; right: 14px;
+  background: none; border: 0;
+  width: 32px; height: 32px;
+  display: grid; place-items: center;
+  color: var(--gray-700);
+  cursor: pointer;
+  border-radius: 6px;
+}
+.confirmModal__close:hover { background: var(--gray-100); color: var(--gray-900); }
+.confirmModal__body {
+  display: flex; flex-direction: column;
+  padding: 28px 24px 24px;
+  gap: 16px;
+}
+.confirmModal__title {
+  font: 700 20px/26px var(--font-sans);
+  color: var(--gray-800);
+  padding-right: 32px;
+}
+.confirmModal__sub {
+  font: 400 14px/20px var(--font-sans);
+  color: var(--gray-700);
+  margin-top: -8px;
+}
+.confirmModal__actions {
+  display: flex; justify-content: flex-end; gap: 10px;
+  margin-top: 4px;
+}
+.confirmModal__actions .skid-btn { min-width: 120px; }
+
 .sa-stage {
   padding: 20px 22px 22px;
   display: flex; flex-direction: column; gap: 12px;
