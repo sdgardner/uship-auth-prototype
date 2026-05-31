@@ -419,7 +419,7 @@ function ConfirmEmailModal({ email, onConfirm, onCancel }) {
             <TextInput
               type="email"
               value={val}
-              placeholder={email || "you@company.com"}
+              placeholder=""
               onChange={(e) => { setVal(e.target.value); if (err) setErr(""); }}
             />
           </Field>
