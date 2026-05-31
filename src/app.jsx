@@ -85,7 +85,7 @@ function App() {
   // Shared form state across the wizard — so jumping between
   // screens via Tweaks preserves what's already been typed.
   const [data, setDataRaw] = useStateApp({
-    role: "shipper",
+    role: "carrier",
     acctType: "personal",
     first: "", last: "", email: "", pw: "", phone: "",
     marketing: false, terms: false, remember: true,
