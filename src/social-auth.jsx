@@ -21,7 +21,7 @@ const PROVIDER_META = {
     badgeBorder: "1px solid var(--gray-300)",
     badgeColor: "var(--gray-800)",
     accounts: [
-      { id: "g1", first: "Dale",  last: "Kovac",   email: "dale.kovac@gmail.com",     initials: "DK", color: "#0F9D58" },
+      { id: "g1", first: "Dale",  last: "Kovac",   email: "test@gmail.com",           initials: "DK", color: "#0F9D58" },
       { id: "g2", first: "D.",    last: "Kovac",   email: "dales.hauling.co@gmail.com", initials: "DH", color: "#4285F4" },
     ],
   },
