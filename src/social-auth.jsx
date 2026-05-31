@@ -36,7 +36,7 @@ const PROVIDER_META = {
     badgeBorder: "1px solid #000",
     badgeColor: "#fff",
     accounts: [
-      { id: "a1", first: "Dale", last: "Kovac", email: "dale.kovac@icloud.com", initials: "DK", color: "#333" },
+      { id: "a1", first: "Dale", last: "Kovac", email: "test@gmail.com", initials: "DK", color: "#333" },
       { id: "a2", first: "Dale", last: "Kovac", email: "_____@privaterelay.appleid.com", relay: true, initials: "DK", color: "#666" },
     ],
   },
@@ -51,7 +51,7 @@ const PROVIDER_META = {
     badgeBorder: "1px solid rgb(24,119,242)",
     badgeColor: "#fff",
     accounts: [
-      { id: "f1", first: "Dale", last: "Kovac", email: "dale.kovac@outlook.com", initials: "DK", color: "#1877F2" },
+      { id: "f1", first: "Dale", last: "Kovac", email: "test@gmail.com", initials: "DK", color: "#1877F2" },
     ],
   },
 };
