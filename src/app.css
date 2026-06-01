@@ -255,13 +255,12 @@ button { font: inherit; }
   color: var(--blue-800);
 }
 
-/* Input fill — Skid layer-02 (gray-100) across the whole flow.
-   Focus lifts back to layer-01 / white. */
+/* Input fill — gray-0 (white) across all states. */
 .app .skid-input {
-  background-color: var(--surface-layer-02);
+  background-color: var(--gray-0);
 }
-.app .skid-input:hover { background-color: var(--surface-layer-02); border-color: var(--gray-500); }
-.app .skid-input:focus { background-color: var(--surface-layer-01); }
+.app .skid-input:hover { background-color: var(--gray-0); border-color: var(--gray-500); }
+.app .skid-input:focus { background-color: var(--gray-0); }
 
 /* Width helpers */
 .btn--full { width: 100%; }
